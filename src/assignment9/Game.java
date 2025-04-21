@@ -7,6 +7,7 @@ import edu.princeton.cs.introcs.StdDraw;
 public class Game {
 	 private Snake snake;
 	    private Food food;
+	    private int score = 0;
 
 	    public Game() {
 	        StdDraw.enableDoubleBuffering();
@@ -24,6 +25,7 @@ public class Game {
 	            snake.move();
 
 	            if (snake.eatFood(food)) {
+	            	score++;       // Increase score
 	                food = new Food(); // new food if eaten
 	            }
 
@@ -52,11 +54,16 @@ public class Game {
 	     * Clears the screen, draws the snake and food, pauses, and shows content
 	     */
 	    private void updateDrawing() {
-	        StdDraw.clear();
-	        food.draw();
-	        snake.draw();
-	        StdDraw.show();
-	        StdDraw.pause(50); // adjust speed here
+			StdDraw.clear();
+			food.draw();
+			snake.draw();
+			
+			// Draw score at top-left corner
+			StdDraw.setPenColor(StdDraw.BLACK);
+			StdDraw.textLeft(0.02, 0.98, "Score: " + score);
+			
+			StdDraw.show();
+			StdDraw.pause(50);
 	    }
 
 	    public static void main(String[] args) {
