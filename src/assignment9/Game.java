@@ -24,7 +24,7 @@ public class Game {
 
 	            snake.move();
 
-	            if (snake.eatFood(food)) {
+	            if (snake.eatFood(food)) { //-----------------------
 	            	score++;       // Increase score
 	                food = new Food(); // new food if eaten
 	            }
